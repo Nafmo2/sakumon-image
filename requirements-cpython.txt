@@ -20,6 +20,10 @@ setuptools==66.0.0
 # lightgbm==3.3.1
 gmpy2==2.1.5
 numba==0.57.0
+# 作問用パッケージ
+rime
+statements-manager
+beautifulsoup4
 rich==13.9.4
 dacite==1.9.2
 --index-url https://test.pypi.org/simple/
