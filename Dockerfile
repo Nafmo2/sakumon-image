@@ -9,7 +9,7 @@ ENV TZ=Asia/Tokyo
 # gmpy2 用に gmp, mpfr, mpc をインストールする
 RUN apt-get update -qq \
  && apt-get install -qq \
-    zsh time tree git curl nano vim ca-certificates \
+    time tree git curl nano vim ca-certificates \
     nodejs npm rustc python3-venv python3-pip python3-launchpadlib gfortran pkg-config \
     libgmp-dev libmpfr-dev libmpc-dev libopenblas-dev liblapack-dev libgeos-dev \
  && apt-get clean \
@@ -18,7 +18,8 @@ RUN apt-get update -qq \
 # Python, PyPy のパッケージをインストール
 WORKDIR /tmp
 COPY requirements-cpython.txt /tmp/requirements-cpython.txt
-RUN python3 -m pip install --no-cache-dir --break-system-packages -r requirements-cpython.txt
+RUN python3 -m pip install --no-cache-dir --upgrade pip setuptools wheel && \
+    python3 -m pip install --no-cache-dir --break-system-packages -r requirements-cpython.txt
 
 COPY requirements-pypy.txt /tmp/requirements-pypy.txt
 RUN pypy3 -m pip install --no-cache-dir --upgrade pip \
