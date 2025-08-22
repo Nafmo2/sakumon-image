@@ -1,4 +1,4 @@
-FROM pypy:3.11-trixie
+FROM pypy:3.11-7.3.19-bookworm
 
 ENV PATH="/usr/bin:/usr/local/bin:$PATH"
 ENV LANG=C.UTF-8
@@ -18,8 +18,8 @@ RUN apt-get update -qq \
 # Python, PyPy のパッケージをインストール
 WORKDIR /tmp
 COPY requirements-cpython.txt /tmp/requirements-cpython.txt
-RUN python3 -m pip install --no-cache-dir --upgrade pip setuptools wheel && \
-    python3 -m pip install --no-cache-dir --break-system-packages -r requirements-cpython.txt
+RUN python3 -m pip install --no-cache-dir --break-system-packages --upgrade pip \
+ && python3 -m pip install --no-cache-dir --break-system-packages -r requirements-cpython.txt
 
 COPY requirements-pypy.txt /tmp/requirements-pypy.txt
 RUN pypy3 -m pip install --no-cache-dir --upgrade pip \
