@@ -39,14 +39,15 @@ RUN git clone https://github.com/atcoder/ac-library.git /lib/ac-library
 ENV CPLUS_INCLUDE_PATH="/lib/ac-library:/lib/testlib:$CPLUS_INCLUDE_PATH"
 
 # Zsh をいい感じにする
-RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
-COPY zshrc /root/.zshrc
+# RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+# COPY zshrc /root/.zshrc
 
 # プロンプトの見た目をいい感じにする
-RUN curl -sS https://starship.rs/install.sh | sh -s -- --yes \
- && echo "eval \"\$(starship init zsh)\"" >> /root/.zshrc
+# RUN curl -sS https://starship.rs/install.sh | sh -s -- --yes \
+#  && echo "eval \"\$(starship init zsh)\"" >> /root/.zshrc
 
 # シェルを zsh にする
-RUN chsh -s /bin/zsh
+# RUN chsh -s /bin/zsh
 
-CMD /bin/zsh -c "cd /root/app && exec /bin/zsh"
+# CMD /bin/zsh -c "cd /root/app && exec /bin/zsh"
+CMD /bin/bash -c "cd /root/app && exec /bin/bash"
