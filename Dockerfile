@@ -1,4 +1,4 @@
-FROM pypy:3.11-7.3.19-bookworm
+FROM pypy:3.11-slim
 
 ENV PATH="/usr/bin:/usr/local/bin:$PATH"
 ENV LANG=C.UTF-8
