@@ -1,4 +1,4 @@
-FROM pypy:3.11-slim
+FROM pypy:3.11-trixie
 
 ENV PATH="/usr/bin:/usr/local/bin:$PATH"
 ENV LANG=C.UTF-8
