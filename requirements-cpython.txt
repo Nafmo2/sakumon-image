@@ -22,7 +22,7 @@ gmpy2==2.1.5
 numba==0.57.0
 # 作問用パッケージ
 rime==2.2.1
-statements-manager==1.7.19
+statements-manager==2.0.1
 beautifulsoup4==4.13.3
 rich==13.9.4
 dacite==1.9.2
