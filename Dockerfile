@@ -29,6 +29,7 @@ RUN pypy3 -m pip install --no-cache-dir --upgrade pip \
 RUN npm i -g textlint \
     textlint-rule-preset-ja-technical-writing \
     textlint-rule-preset-ja-spacing \
+    textlint-rule-prh \
     textlint-filter-rule-comments \
     textlint-filter-rule-allowlist \
     @go-task/cli && \
