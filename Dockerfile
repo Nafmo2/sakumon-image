@@ -5,11 +5,13 @@ ENV LANG=C.UTF-8
 ENV LANGUAGE=en_US:
 ENV TZ=Asia/Tokyo
 
+ARG YUKICODER_MD_VERSION=v0.1.0
+
 # 諸々のインストール
 # gmpy2 用に gmp, mpfr, mpc をインストールする
 RUN apt-get update -qq \
  && apt-get install -qq \
-    time tree git curl nano vim ca-certificates \
+    time tree git curl unzip nano vim ca-certificates  \
     nodejs npm rustc python3-venv python3-pip python3-launchpadlib gfortran pkg-config \
     libgmp-dev libmpfr-dev libmpc-dev libopenblas-dev liblapack-dev libgeos-dev \
  && apt-get clean \
@@ -38,6 +40,13 @@ RUN npm i -g textlint \
 # ac-library のインストール
 RUN git clone https://github.com/atcoder/ac-library.git /lib/ac-library
 ENV CPLUS_INCLUDE_PATH="/lib/ac-library:/lib/testlib:$CPLUS_INCLUDE_PATH"
+
+# yukicoder-md のインストール
+RUN curl -L -o /tmp/yukicoder-md.zip https://github.com/koyumeishi/yukicoder-md/releases/download/${YUKICODER_MD_VERSION}/yukicoder-md-x86_64-unknown-linux-gnu.zip \
+    && unzip /tmp/yukicoder-md.zip -d /usr/local/bin \
+    && rm /tmp/yukicoder-md.zip \
+    && chmod +x /usr/local/bin/yukicoder-md
+
 
 # Zsh をいい感じにする
 # RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
